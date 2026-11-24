@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "repoType": "plugin",
+  "mode": "baseline",
+  "baselineCommit": null,
+  "reviewedHead": null,
+  "references": [
+    {
+      "repo": "danyuchn/asd-ste100-skill",
+      "commit": "32511c6992ecb5f1971e46a2943f2e6adceedafe",
+      "inspected": [
+        "README.md",
+        "SKILL.md"
+      ],
+      "adopted": [
+        "One skill folder with SKILL.md at the root and a scripts/ folder for a standard-library checker that has a self-test mode. lean-kb keeps scripts/check_numbers.py with --selftest for the same reason: a check must prove itself.",
+        "The README states the scope limits and what the skill does not do. lean-kb states its limits in each README and in SKILL.md."
+      ],
+      "rejected": [
+        "Install through the npx skills CLI. lean-kb also needs a hook entry in the Claude Code settings file, so its README shows git clone and the entry. A one-line installer cannot register the hook."
+      ]
+    },
+    {
+      "repo": "anthropics/skills",
+      "commit": "e4bb5d960d87126ff3b3a8af1a104b7db67560ba",
+      "inspected": [
+        "README.md",
+        "template/SKILL.md"
+      ],
+      "adopted": [
+        "SKILL.md frontmatter with only name and description, and a self-contained skill folder. lean-kb uses the same frontmatter and keeps each file that the skill needs in one folder."
+      ],
+      "rejected": [
+        "Distribution as a plugin marketplace entry. lean-kb is one skill with one hook, and a plugin manifest was not tested, so it ships as a plain folder."
+      ]
+    }
+  ],
+  "reproducibility": {
+    "prerequisites": [
+      "Claude Code",
+      "Python 3",
+      "bash",
+      "git"
+    ],
+    "install": {
+      "command": "git clone https://github.com/grow1023/lean-kb.git",
+      "status": "unverified",
+      "evidence": "",
+      "reason": "The repository was not published when this record was written. A fresh clone is checked after the first push."
+    },
+    "test": {
+      "command": "bash gates/verify_lean_kb.sh",
+      "status": "verified",
+      "evidence": "Exit code 0 with seven PASS lines. The hook self-test printed ALL PASS. Platform: macOS, bash, Python 3.",
+      "reason": ""
+    }
+  },
+  "ci": {
+    "workflows": [],
+    "remote": "not-configured",
+    "runUrl": "",
+    "runSha": ""
+  },
+  "license": {
+    "status": "present",
+    "file": "LICENSE",
+    "attribution": []
+  },
+  "privacy": {
+    "gaps": []
+  },
+  "diffReview": null,
+  "readiness": {
+    "verified": [
+      "test"
+    ],
+    "unverified": [
+      "install",
+      "ci",
+      "Linux and Windows",
+      "hook start in a session on another machine"
+    ],
+    "blocked": []
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "profile": "public-full",
+  "intent": {
+    "visibility": "private",
+    "images": "required",
+    "languages": [
+      "en",
+      "ko",
+      "ja",
+      "zh"
+    ],
+    "release": "not_requested",
+    "description": "Claude Code hook and skill that adds nine knowledge-base design rules to the context when a prompt names a wiki, an ontology, or a RAG index.",
+    "homepage": "",
+    "topics": [
+      "claude-code",
+      "claude-skills",
+      "context-engineering",
+      "hooks",
+      "knowledge-base",
+      "ontology",
+      "rag",
+      "wiki"
+    ]
+  },
+  "approvals": {
+    "images": true,
+    "publish": false,
+    "release": false
+  },
+  "local": {
+    "artifacts": "pending",
+    "version": "pending"
+  },
+  "remote": {
+    "push": "pending",
+    "metadata": "pending",
+    "tag": "not_requested",
+    "release": "not_requested",
+    "verification": "pending"
+  },
+  "result": "incomplete"
+}

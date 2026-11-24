@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 1,
+  "evidence": [
+    {
+      "id": "ev-hook-contract",
+      "path": "hooks/lean_kb_hook.py",
+      "lines": [
+        3,
+        17
+      ],
+      "status": "code-verified"
+    },
+    {
+      "id": "ev-hook-match",
+      "path": "hooks/lean_kb_hook.py",
+      "lines": [
+        23,
+        59
+      ],
+      "status": "code-verified"
+    },
+    {
+      "id": "ev-hook-disable",
+      "path": "hooks/lean_kb_hook.py",
+      "lines": [
+        62,
+        66
+      ],
+      "status": "code-verified"
+    },
+    {
+      "id": "ev-hook-main",
+      "path": "hooks/lean_kb_hook.py",
+      "lines": [
+        76,
+        93
+      ],
+      "status": "code-verified"
+    },
+    {
+      "id": "ev-note",
+      "path": "rules/lean-kb.md",
+      "lines": [
+        1,
+        13
+      ],
+      "status": "documented"
+    },
+    {
+      "id": "ev-rules-table",
+      "path": "SKILL.md",
+      "lines": [
+        18,
+        34
+      ],
+      "status": "documented"
+    },
+    {
+      "id": "ev-measure",
+      "path": "SKILL.md",
+      "lines": [
+        36,
+        46
+      ],
+      "status": "documented"
+    },
+    {
+      "id": "ev-templates",
+      "path": "SKILL.md",
+      "lines": [
+        48,
+        91
+      ],
+      "status": "documented"
+    },
+    {
+      "id": "ev-register",
+      "path": "SKILL.md",
+      "lines": [
+        93,
+        101
+      ],
+      "status": "documented"
+    },
+    {
+      "id": "ev-hook-behavior",
+      "path": "SKILL.md",
+      "lines": [
+        103,
+        111
+      ],
+      "status": "documented"
+    },
+    {
+      "id": "ev-live-check",
+      "path": "SKILL.md",
+      "lines": [
+        112,
+        112
+      ],
+      "status": "execution-verified"
+    },
+    {
+      "id": "ev-subagent",
+      "path": "SKILL.md",
+      "lines": [
+        114,
+        116
+      ],
+      "status": "documented"
+    },
+    {
+      "id": "ev-limits",
+      "path": "SKILL.md",
+      "lines": [
+        118,
+        126
+      ],
+      "status": "documented"
+    },
+    {
+      "id": "ev-test",
+      "path": "hooks/lean_kb_hook.test.sh",
+      "lines": [
+        1,
+        74
+      ],
+      "status": "execution-verified"
+    },
+    {
+      "id": "ev-gate",
+      "path": "gates/verify_lean_kb.sh",
+      "lines": [
+        1,
+        67
+      ],
+      "status": "execution-verified"
+    },
+    {
+      "id": "ev-numbers",
+      "path": "scripts/check_numbers.py",
+      "lines": [
+        2,
+        10
+      ],
+      "status": "execution-verified"
+    },
+    {
+      "id": "ev-facts",
+      "path": "evidence/facts.md",
+      "lines": [
+        1,
+        5
+      ],
+      "status": "documented"
+    }
+  ],
+  "claims": {
+    "rules-at-task-time": [
+      "ev-hook-match",
+      "ev-hook-main",
+      "ev-note"
+    ],
+    "evidence-with-limits": [
+      "ev-rules-table",
+      "ev-gate",
+      "ev-numbers",
+      "ev-facts"
+    ],
+    "small-and-reversible": [
+      "ev-hook-contract",
+      "ev-hook-disable",
+      "ev-test"
+    ],
+    "read-prompt": [
+      "ev-hook-contract",
+      "ev-hook-disable",
+      "ev-hook-main"
+    ],
+    "match-keywords": [
+      "ev-hook-match",
+      "ev-test"
+    ],
+    "add-note": [
+      "ev-hook-main",
+      "ev-note",
+      "ev-rules-table"
+    ],
+    "team-wiki": [
+      "ev-note",
+      "ev-templates"
+    ],
+    "memory-index": [
+      "ev-note",
+      "ev-measure",
+      "ev-limits"
+    ],
+    "schema-change": [
+      "ev-note",
+      "ev-rules-table",
+      "ev-templates"
+    ],
+    "one-talk": [
+      "ev-limits",
+      "ev-facts"
+    ],
+    "not-affiliated": [
+      "ev-limits",
+      "ev-facts"
+    ],
+    "keyword-trigger": [
+      "ev-hook-behavior"
+    ],
+    "stateless-cost": [
+      "ev-hook-behavior",
+      "ev-hook-contract"
+    ],
+    "subagents": [
+      "ev-subagent"
+    ],
+    "platform": [
+      "ev-gate",
+      "ev-limits"
+    ],
+    "v-selftest": [
+      "ev-test"
+    ],
+    "v-gate": [
+      "ev-gate",
+      "ev-numbers"
+    ],
+    "v-live": [
+      "ev-live-check"
+    ],
+    "v-talk-numbers": [
+      "ev-facts",
+      "ev-rules-table"
+    ],
+    "quickstart": [
+      "ev-register",
+      "ev-test",
+      "ev-hook-main"
+    ]
+  }
+}
