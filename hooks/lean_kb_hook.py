@@ -23,7 +23,8 @@ import sys
 KEYWORDS = (
     "온톨로지", "위키", "지식 그래프", "지식그래프", "지식 베이스", "지식베이스",
     "세컨드 브레인", "기억 목차", "메모리 목차",
-    "ontology", "wiki", "knowledge graph", "knowledge base", "second brain",
+    "ontology", "ontologies", "wiki", "wikis", "knowledge graph", "knowledge graphs",
+    "knowledge base", "knowledge bases", "second brain",
     "MEMORY.md", "RAG",
 )
 # No note for a shell escape, or for a note that a side agent adds (not a user request).
@@ -31,6 +32,8 @@ KEYWORDS = (
 EXCLUDE = re.compile(r"^\s*(?:!|Here is a note offered by a side agent)")
 
 URL = re.compile(r"(?:https?://|www\.)\S+", re.IGNORECASE)
+# Text that the host adds around a prompt is not a user request.
+HOST_BLOCK = re.compile(r"<(task-notification|system-reminder)>.*?</\1>", re.DOTALL)
 
 
 def _is_latin(word):
@@ -54,9 +57,10 @@ def matches(prompt):
     """True when the prompt asks for knowledge-base work."""
     if not isinstance(prompt, str) or not prompt.strip():
         return False
-    if EXCLUDE.search(prompt):
+    text = HOST_BLOCK.sub(" ", prompt)
+    if EXCLUDE.search(text):
         return False
-    return PATTERN.search(URL.sub(" ", prompt)) is not None
+    return PATTERN.search(URL.sub(" ", text)) is not None
 
 
 def disabled(env):

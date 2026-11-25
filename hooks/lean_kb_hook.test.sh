@@ -41,10 +41,24 @@ expect_silent "no prompt field" '{"other":"위키"}'
 expect_silent "URL only wiki" "$(mk 'https://en.wikipedia.org/wiki/Hippocampus 요약해줘')"
 expect_silent "storage" "$(mk 'storage 정리해줘')"
 expect_silent "side-agent note" "$(mk 'Here is a note offered by a side agent: 위키 관계 549건')"
+expect_silent "host notification block" "$(mk '<task-notification><result>위키 검토 결과</result></task-notification>')"
+
+expect_inject() { # name stdin-text
+  out="$(run_hook "$2")"; s=0
+  printf '%s' "$out" | grep -q 'lean-kb' || s=1
+  report "inject: $1" $s
+}
+expect_inject "plural keyword" "$(mk 'compare two wikis')"
+expect_inject "user text after a host block" "$(mk '<system-reminder>note</system-reminder> 위키 구조 잡아줘')"
 
 # disable switch 1
 out="$(printf '%s' "$(mk '사내 위키 구조 잡아줘')" | LEAN_KB_DISABLE=1 HOME="$TMP/home" python3 "$HOOK" 2>/dev/null)"; s=0; [ -z "$out" ] || s=1
 report "silent: LEAN_KB_DISABLE=1" $s
+
+# disable switch 2, project side: a flag file in the .claude folder of CLAUDE_PROJECT_DIR
+mkdir -p "$TMP/proj/.claude"; : > "$TMP/proj/.claude/lean-kb.off"
+out="$(printf '%s' "$(mk '사내 위키 구조 잡아줘')" | CLAUDE_PROJECT_DIR="$TMP/proj" HOME="$TMP/nohome" python3 "$HOOK" 2>/dev/null)"; s=0; [ -z "$out" ] || s=1
+report "silent: project flag file" $s
 
 # disable switch 2: flag file in temporary HOME
 mkdir -p "$TMP/home2/.claude"; : >"$TMP/home2/.claude/lean-kb.off"

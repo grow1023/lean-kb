@@ -40,7 +40,7 @@ Claude Code は送信されたプロンプトごとにフックを起動し、�
 
 ### 2. キーワードを照合する
 
-フックは URL を除いてから、wiki、ontology、RAG、MEMORY.md などのキーワードを探します。英字のキーワードは単語全体の一致が必要なので、storage は RAG に一致しません。
+フックは URL を除いてから、wiki、ontology、RAG、MEMORY.md などのキーワードを探します。英字のキーワードは大文字と小文字を区別せず、単語全体の一致が必要なので、storage は RAG に一致しません。韓国語のキーワードは、より長い単語の中でも一致します。
 
 ### 3. ノートを追加する
 
@@ -54,7 +54,7 @@ wiki の構成を依頼すると、ノートがモデルに次のことを伝え
 
 ### Claude Code のメモリインデックスを整理する
 
-MEMORY.md の整理を依頼すると、ルールに従って、ルールの行は切り捨て上限より上に置き、事実の本文はインデックス行の後ろに移します。SKILL.md には、1 つのセッションがインデックスをどれだけ開くかを手作業で測る方法があります。
+MEMORY.md の整理を依頼すると、ルールに従って、ルールの行は、超過分が切り落とされる読み込み上限より上に置き、事実の本文はインデックス行の後ろに移します。SKILL.md には、1 つのセッションがインデックスをどれだけ開くかを手作業で測る方法があります。
 
 ### チェックを先に決めてオントロジーのスキーマを変更する
 
@@ -72,9 +72,9 @@ MEMORY.md の整理を依頼すると、ルールに従って、ルールの行�
 
 - このプロジェクトは独立した要約です。NAVER のプロジェクトではなく、講演に登場する Haema エンジンでもありません。検索、重複排除、セッションロールオーバーは実装していません。
 
-- フックはキーワードだけを照合します。キーワードを含まないナレッジベースの依頼にはノートが追加されず、そのような依頼の割合は測定していません。Obsidian、memory、CLAUDE.md、graph は、無関係なプロンプトに一致することのほうが多かったため、キーワードに含めていません。
+- フックはキーワードだけを照合します。キーワードを含まないナレッジベースの依頼にはノートが追加されず、そのような依頼の割合は測定していません。Obsidian、memory、CLAUDE.md、graph は、無関係なプロンプトに一致することのほうが多かったため、キーワードに含めていません。`!` で始まるプロンプトと、サイドエージェントのノートで始まるプロンプトにもノートを追加しません。
 
-- フックは状態を保持しません。一致したプロンプトごとにノート全体を追加するため、コストはノートのサイズに、セッション内で一致したプロンプトの数を掛けた値になります。
+- フックは状態を保持しません。一致したプロンプトごとにノート全体を追加するため、コストはノートのサイズに、セッション内で一致したプロンプトの数を掛けた値になります。この繰り返しはノートのルール 4 に反しており、セッション単位の重複排除は実装していません。
 
 - フックはユーザーが送信したプロンプトに対して実行されます。サブエージェントは親エージェントからプロンプトを受け取るため、ノートは届かないと考えられます。この動作はテストしていません。ナレッジベース作業を委任する場合は、rules/lean-kb.md のパスをサブエージェントに渡してください。
 
@@ -97,19 +97,19 @@ MEMORY.md の整理を依頼すると、ルールに従って、ルールの行�
 [JSON](docs/showcase/sources.json)
 
 - `ev-hook-contract`: `hooks/lean_kb_hook.py`, L3–L17 (コード確認済み)
-- `ev-hook-match`: `hooks/lean_kb_hook.py`, L23–L59 (コード確認済み)
-- `ev-hook-disable`: `hooks/lean_kb_hook.py`, L62–L66 (コード確認済み)
-- `ev-hook-main`: `hooks/lean_kb_hook.py`, L76–L93 (コード確認済み)
+- `ev-hook-match`: `hooks/lean_kb_hook.py`, L23–L63 (コード確認済み)
+- `ev-hook-disable`: `hooks/lean_kb_hook.py`, L66–L70 (コード確認済み)
+- `ev-hook-main`: `hooks/lean_kb_hook.py`, L80–L97 (コード確認済み)
 - `ev-note`: `rules/lean-kb.md`, L1–L13 (文書に記載)
 - `ev-rules-table`: `SKILL.md`, L18–L34 (文書に記載)
 - `ev-measure`: `SKILL.md`, L36–L46 (文書に記載)
-- `ev-templates`: `SKILL.md`, L48–L91 (文書に記載)
+- `ev-templates`: `SKILL.md`, L48–L67 (文書に記載)
 - `ev-register`: `SKILL.md`, L93–L101 (文書に記載)
-- `ev-hook-behavior`: `SKILL.md`, L103–L111 (文書に記載)
-- `ev-live-check`: `SKILL.md`, L112–L112 (実行確認済み)
-- `ev-subagent`: `SKILL.md`, L114–L116 (文書に記載)
-- `ev-limits`: `SKILL.md`, L118–L126 (文書に記載)
-- `ev-test`: `hooks/lean_kb_hook.test.sh`, L1–L74 (実行確認済み)
+- `ev-hook-behavior`: `SKILL.md`, L103–L114 (文書に記載)
+- `ev-live-check`: `SKILL.md`, L115–L115 (実行確認済み)
+- `ev-subagent`: `SKILL.md`, L117–L119 (文書に記載)
+- `ev-limits`: `SKILL.md`, L121–L130 (文書に記載)
+- `ev-test`: `hooks/lean_kb_hook.test.sh`, L1–L88 (実行確認済み)
 - `ev-gate`: `gates/verify_lean_kb.sh`, L1–L67 (実行確認済み)
 - `ev-numbers`: `scripts/check_numbers.py`, L2–L10 (実行確認済み)
 - `ev-facts`: `evidence/facts.md`, L1–L5 (文書に記載)

@@ -5,9 +5,9 @@
 4. Do not load the same evidence two times in one session. Refer to it with one line.
 5. For a changed fact, add a dated entry and put the newest entry first. Do not merge old entries into one summary.
 6. Before a long session splits or ends, write the final values and the boundary conditions word for word.
-7. Change a default or a schema only after a check that you defined before you saw the result. Compare with the first baseline.
+7. Change a default or a schema only after a check that you defined before you saw the result. Compare with the first baseline. The schema part is inference.
 8. Inference, not measured: write each sentence, list item, and table row with its context (title, heading path, table header).
 9. Inference, not measured: in an ontology, keep one canonical node for each entity. Put the aliases on that node.
 Basis: one conference talk with small samples from one environment. Check each rule in the target repository before you rely on it.
 Read the evidence, the scope, and the templates before you design: ~/.claude/skills/lean-kb/SKILL.md
-This note does not reach subagents. If you delegate this work, give the subagent this path: ~/.claude/skills/lean-kb/rules/lean-kb.md
+This note is not expected to reach subagents. If you delegate this work, give the subagent this path: ~/.claude/skills/lean-kb/rules/lean-kb.md

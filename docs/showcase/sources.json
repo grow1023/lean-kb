@@ -15,7 +15,7 @@
       "path": "hooks/lean_kb_hook.py",
       "lines": [
         23,
-        59
+        63
       ],
       "status": "code-verified"
     },
@@ -23,8 +23,8 @@
       "id": "ev-hook-disable",
       "path": "hooks/lean_kb_hook.py",
       "lines": [
-        62,
-        66
+        66,
+        70
       ],
       "status": "code-verified"
     },
@@ -32,8 +32,8 @@
       "id": "ev-hook-main",
       "path": "hooks/lean_kb_hook.py",
       "lines": [
-        76,
-        93
+        80,
+        97
       ],
       "status": "code-verified"
     },
@@ -69,7 +69,7 @@
       "path": "SKILL.md",
       "lines": [
         48,
-        91
+        67
       ],
       "status": "documented"
     },
@@ -87,7 +87,7 @@
       "path": "SKILL.md",
       "lines": [
         103,
-        111
+        114
       ],
       "status": "documented"
     },
@@ -95,8 +95,8 @@
       "id": "ev-live-check",
       "path": "SKILL.md",
       "lines": [
-        112,
-        112
+        115,
+        115
       ],
       "status": "execution-verified"
     },
@@ -104,8 +104,8 @@
       "id": "ev-subagent",
       "path": "SKILL.md",
       "lines": [
-        114,
-        116
+        117,
+        119
       ],
       "status": "documented"
     },
@@ -113,8 +113,8 @@
       "id": "ev-limits",
       "path": "SKILL.md",
       "lines": [
-        118,
-        126
+        121,
+        130
       ],
       "status": "documented"
     },
@@ -123,7 +123,7 @@
       "path": "hooks/lean_kb_hook.test.sh",
       "lines": [
         1,
-        74
+        88
       ],
       "status": "execution-verified"
     },

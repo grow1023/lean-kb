@@ -40,7 +40,7 @@ Claude Code starts the hook for each submitted prompt and passes the prompt as J
 
 ### 2. Match the keywords
 
-The hook removes URLs and then looks for a keyword such as wiki, ontology, knowledge graph, RAG, or MEMORY.md. A Latin keyword must be a full word, so the word storage does not match RAG.
+The hook removes URLs and then looks for a keyword such as wiki, ontology, knowledge graph, RAG, or MEMORY.md. A Latin keyword must be a full word and the match ignores case, so the word storage does not match RAG. A Korean keyword also matches inside a longer word.
 
 ### 3. Add the note
 
@@ -72,9 +72,9 @@ Ask for an ontology or knowledge-graph change. The note asks for one canonical n
 
 - This project is an independent summary. It is not a NAVER project, and it is not the Haema engine from the talk. It implements no retrieval, no dedupe, and no session rollover.
 
-- The hook matches keywords only. A knowledge-base request without a keyword gets no note, and the share of such requests is not measured. The words Obsidian, memory, CLAUDE.md, and graph are not keywords, because they matched unrelated prompts more often.
+- The hook matches keywords only. A knowledge-base request without a keyword gets no note, and the share of such requests is not measured. The words Obsidian, memory, CLAUDE.md, and graph are not keywords, because they matched unrelated prompts more often. A prompt that starts with `!` or with a side-agent note also gets no note.
 
-- The hook keeps no state. It adds the full note to each matching prompt, so the cost is the note size multiplied by the number of matching prompts in a session.
+- The hook keeps no state. It adds the full note to each matching prompt, so the cost is the note size multiplied by the number of matching prompts in a session. This repeat is contrary to rule 4 of the note. Session dedupe is not implemented.
 
 - The hook runs on prompts that the user submits. A subagent receives its prompt from the parent agent, so the note is not expected to reach a subagent. This behavior is not tested. If you delegate knowledge-base work, give the subagent the path of rules/lean-kb.md.
 
@@ -97,19 +97,19 @@ Read SKILL.md for the evidence table, the templates, and the three ratios to mea
 [JSON](docs/showcase/sources.json)
 
 - `ev-hook-contract`: `hooks/lean_kb_hook.py`, L3–L17 (Source inspected)
-- `ev-hook-match`: `hooks/lean_kb_hook.py`, L23–L59 (Source inspected)
-- `ev-hook-disable`: `hooks/lean_kb_hook.py`, L62–L66 (Source inspected)
-- `ev-hook-main`: `hooks/lean_kb_hook.py`, L76–L93 (Source inspected)
+- `ev-hook-match`: `hooks/lean_kb_hook.py`, L23–L63 (Source inspected)
+- `ev-hook-disable`: `hooks/lean_kb_hook.py`, L66–L70 (Source inspected)
+- `ev-hook-main`: `hooks/lean_kb_hook.py`, L80–L97 (Source inspected)
 - `ev-note`: `rules/lean-kb.md`, L1–L13 (Documented)
 - `ev-rules-table`: `SKILL.md`, L18–L34 (Documented)
 - `ev-measure`: `SKILL.md`, L36–L46 (Documented)
-- `ev-templates`: `SKILL.md`, L48–L91 (Documented)
+- `ev-templates`: `SKILL.md`, L48–L67 (Documented)
 - `ev-register`: `SKILL.md`, L93–L101 (Documented)
-- `ev-hook-behavior`: `SKILL.md`, L103–L111 (Documented)
-- `ev-live-check`: `SKILL.md`, L112–L112 (Execution verified)
-- `ev-subagent`: `SKILL.md`, L114–L116 (Documented)
-- `ev-limits`: `SKILL.md`, L118–L126 (Documented)
-- `ev-test`: `hooks/lean_kb_hook.test.sh`, L1–L74 (Execution verified)
+- `ev-hook-behavior`: `SKILL.md`, L103–L114 (Documented)
+- `ev-live-check`: `SKILL.md`, L115–L115 (Execution verified)
+- `ev-subagent`: `SKILL.md`, L117–L119 (Documented)
+- `ev-limits`: `SKILL.md`, L121–L130 (Documented)
+- `ev-test`: `hooks/lean_kb_hook.test.sh`, L1–L88 (Execution verified)
 - `ev-gate`: `gates/verify_lean_kb.sh`, L1–L67 (Execution verified)
 - `ev-numbers`: `scripts/check_numbers.py`, L2–L10 (Execution verified)
 - `ev-facts`: `evidence/facts.md`, L1–L5 (Documented)
