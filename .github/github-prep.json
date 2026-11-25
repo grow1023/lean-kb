@@ -3,7 +3,7 @@
   "repoType": "plugin",
   "mode": "baseline",
   "baselineCommit": null,
-  "reviewedHead": "99bbb71b6b9745bb7fc0cb987f4a2a4c8397564c",
+  "reviewedHead": "fab71e15cdf9f56fcd61eba5f0b382eb67f9e784",
   "references": [
     {
       "repo": "danyuchn/asd-ste100-skill",
