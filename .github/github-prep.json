@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "repoType": "plugin",
-  "mode": "baseline",
-  "baselineCommit": null,
-  "reviewedHead": "fab71e15cdf9f56fcd61eba5f0b382eb67f9e784",
+  "mode": "update",
+  "baselineCommit": "fab71e15cdf9f56fcd61eba5f0b382eb67f9e784",
+  "reviewedHead": "370ef682a3f3681b8ce8a06bd1feb3a2a55491e1",
   "references": [
     {
       "repo": "danyuchn/asd-ste100-skill",
@@ -44,9 +44,9 @@
     ],
     "install": {
       "command": "git clone https://github.com/grow1023/lean-kb.git",
-      "status": "unverified",
-      "evidence": "",
-      "reason": "The repository was not published when this record was written. A fresh clone is checked after the first push."
+      "status": "verified",
+      "evidence": "A fresh clone of the public repository ran the hook self-test (ALL PASS) and the master gate (exit code 0) on macOS.",
+      "reason": ""
     },
     "test": {
       "command": "bash gates/verify_lean_kb.sh",
@@ -69,13 +69,46 @@
   "privacy": {
     "gaps": []
   },
-  "diffReview": null,
+  "diffReview": {
+    "since": "fab71e15cdf9f56fcd61eba5f0b382eb67f9e784",
+    "files": [
+      "CHANGELOG.md",
+      "README.ja.md",
+      "README.ko.md",
+      "README.md",
+      "README.zh.md",
+      "SKILL.md",
+      "assets/architecture.png",
+      "assets/gallery-2.png",
+      "assets/ja/architecture.png",
+      "assets/ja/gallery-2.png",
+      "assets/ko/architecture.png",
+      "assets/ko/gallery-1.png",
+      "assets/ko/gallery-2.png",
+      "assets/ko/gallery-3.png",
+      "assets/ko/hero.png",
+      "assets/ko/og.png",
+      "assets/showcase.html",
+      "assets/zh/architecture.png",
+      "assets/zh/gallery-1.png",
+      "assets/zh/gallery-2.png",
+      "assets/zh/gallery-3.png",
+      "assets/zh/hero.png",
+      "assets/zh/og.png",
+      "docs/showcase/content.json",
+      "docs/showcase/sources.json",
+      "hooks/lean_kb_hook.py",
+      "hooks/lean_kb_hook.test.sh",
+      "rules/lean-kb.md"
+    ],
+    "summary": "Review of the changes after the first publish: host notification blocks are removed before the keyword match, plural keywords are added, a project flag file test is added, the number check skips dotted version strings, and the documents state the test conditions of rule 2 and the simulated status of rule 7. The master gate passed on this commit."
+  },
   "readiness": {
     "verified": [
-      "test"
+      "test",
+      "reproducibility.install"
     ],
     "unverified": [
-      "reproducibility.install",
       "ci",
       "Linux and Windows",
       "hook start in a session on another machine"
