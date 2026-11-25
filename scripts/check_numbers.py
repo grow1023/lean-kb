@@ -12,7 +12,7 @@ import html
 import re
 import sys
 
-NUM = re.compile(r'(?<![\w.,])(\d{1,3}(?:,\d{3})+|\d+)(\.\d+)?(\s?(?:%p|%|배|x\b|times\b))?')
+NUM = re.compile(r'(?<![\w.,])(\d{1,3}(?:,\d{3})+|\d+)(?!\d)(\.\d+(?!\d))?(?!\.\d)(\s?(?:%p|%|배|x\b|times\b))?')
 
 
 ATTR = re.compile(r'(?is)\b(?:aria-label|alt|title|data-tip)\s*=\s*"([^"]*)"')
@@ -59,6 +59,9 @@ def selftest():
     assert set(measured('<svg><text>99.9%</text></svg><script>var a = 77.7;</script>'.replace('<svg>', ' '))) >= {'99.9'}
     assert '77.7' not in measured(text_of('<script>var a = 77.7;</script><p>ok</p>'))
     assert '88.8' in measured(text_of('<svg aria-label="값 88.8%"></svg>'))
+    # a dotted version or a date is not a measured number
+    assert set(measured('version 0.1.0, 1000.0.1, 13.85.1, 2026.11.23')) == set()
+    assert set(measured('13.8% and 1,333,077 and 0.355배')) == {'13.8', '1333077', '0.355'}
     print('selftest ok')
 
 

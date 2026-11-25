@@ -30,7 +30,7 @@
     "release": false
   },
   "local": {
-    "artifacts": "pending",
+    "artifacts": "complete",
     "version": "pending"
   },
   "remote": {
