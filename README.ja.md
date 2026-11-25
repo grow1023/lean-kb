@@ -6,7 +6,7 @@
 
 ![lean-kb: 説明用の図であり、実際のアプリ画面ではありません](assets/ja/hero.png)
 
-unreleased · MIT
+0.1.0 · MIT
 
 ## 使う理由
 

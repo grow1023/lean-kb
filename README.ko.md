@@ -6,7 +6,7 @@
 
 ![lean-kb: 설명용 도식이며 실제 앱 화면이 아닙니다](assets/ko/hero.png)
 
-unreleased · MIT
+0.1.0 · MIT
 
 ## 왜 쓰나요
 

@@ -6,7 +6,7 @@
 
 ![lean-kb: 说明示意图，并非实际应用截图](assets/zh/hero.png)
 
-unreleased · MIT
+0.1.0 · MIT
 
 ## 为什么使用
 

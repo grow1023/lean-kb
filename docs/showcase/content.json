@@ -14,7 +14,7 @@
   ],
   "project": {
     "name": "lean-kb",
-    "version": "unreleased",
+    "version": "0.1.0",
     "license": "MIT",
     "summary": {
       "en": "A Claude Code hook and skill that adds nine knowledge-base design rules to the context when a prompt names a wiki, an ontology, or a RAG index.",

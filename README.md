@@ -6,7 +6,7 @@ A Claude Code hook and skill that adds nine knowledge-base design rules to the c
 
 ![lean-kb: Explanatory diagram, not an application screenshot](assets/hero.png)
 
-unreleased · MIT
+0.1.0 · MIT
 
 ## Why use it
 
