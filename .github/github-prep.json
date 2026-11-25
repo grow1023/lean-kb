@@ -75,7 +75,7 @@
       "test"
     ],
     "unverified": [
-      "install",
+      "reproducibility.install",
       "ci",
       "Linux and Windows",
       "hook start in a session on another machine"
